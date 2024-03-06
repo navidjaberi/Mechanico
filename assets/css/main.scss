@@ -1,34 +1,46 @@
-$family: "iran-sans" ,"sans", "Inter", apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
-  Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$family: "iran-sans", "sans", "Inter", apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 @use "vuetify" with (
   $body-font-family: $family
 );
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@font-face {
-  font-family: "iran-sans";
-  src: url("./fonts/iranSans.ttf");
-}
-@font-face {
-    font-family: "sans";
-    src: url("./fonts/sans.ttf");
-  }
+
 :root {
-  font-family:"sans", "iran-sans", sans-serif;
+  font-family: sans-serif;
 }
 @supports (font-variation-settings: normal) {
   :root {
-    font-family: "sans","iran-sans", sans-serif;
+    font-family: sans-serif;
   }
 }
-
+.v-messages__message {
+  hyphens: none !important;
+}
+button {
+  letter-spacing: 0 !important;
+}
+body {
+  direction: rtl !important;
+  font-family: "iran-sans","sans" , sans-serif;
+}
 // Reset link styles
 a {
   color: inherit;
   text-decoration: none;
 }
+.v-text-field input.v-field__input {
+  text-align: right !important;
 
+}
+.v-field-label--floating,
+.v-field-label {
+  right: 10px !important;
+}
+.v-field__prepend-inner {
+  margin-bottom: 0.1rem;
+}
 // Override the textfield's radius
 .v-text-field {
   .v-field__outline__start {
@@ -42,13 +54,7 @@ a {
 .v-btn {
   font-weight: 700 !important;
 }
-.label {
-  font-weight: 600;
-  font-size: 15px;
-  margin-bottom: 6px;
-  display: inline-block;
-  cursor: pointer;
-}
+
 // Theme gradients
 .gradient {
   &.primary {

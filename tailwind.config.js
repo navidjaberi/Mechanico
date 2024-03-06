@@ -3,7 +3,7 @@ module.exports = {
   content: [
     "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
-    "./pages/**/*.vue",
+    "./pages/**/**/*.vue",
     "./plugins/**/*.{js,ts}",
     "./app.vue",
     "./error.vue",
@@ -12,5 +12,8 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  colors:{
+    'primary':'#1F195F'
+  }
 }
 
