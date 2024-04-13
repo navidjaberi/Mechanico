@@ -8,7 +8,7 @@
       >
         <img :src="logo" class="md:w-[150px] w-[120px]" />
       </div>
-      <div class="absolute bottom-0 text-white md:text-2xl text-md w-full">
+      <div class="absolute bottom-0 text-white md:text-2xl text-sm w-full">
         <nav class="flex w-3/4 md:w-1/2 mx-auto justify-between">
           <div class="relative p-3 md:px-10 px-5">
             <a>ورود</a>

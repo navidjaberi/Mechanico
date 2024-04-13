@@ -31,23 +31,13 @@ export default defineComponent({
   name: "SingleOtpInput",
   props: {
     inputType: {
-      type: String as PropType<
-        "number" | "tel" | "letter-numeric" | "password"
-      >,
-      validator: (value: string) =>
-        ["number", "tel", "letter-numeric", "password"].includes(value),
+      type: String as PropType<"number" | "tel" | "letter-numeric" | "password">,
+      validator: (value: string) => ["number", "tel", "letter-numeric", "password"].includes(value),
       default: "tel",
     },
     inputmode: {
       type: String as PropType<
-        | "none"
-        | "text"
-        | "tel"
-        | "url"
-        | "email"
-        | "numeric"
-        | "decimal"
-        | "search"
+        "none" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | "search"
         /**
          * Specify that a standard HTML element should behave like a defined custom built-in element
          * @see https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is
@@ -163,8 +153,7 @@ export default defineComponent({
       handleOnBlur,
       input,
       model,
-      inputTypeValue:
-        props.inputType === "letter-numeric" ? "text" : props.inputType,
+      inputTypeValue: props.inputType === "letter-numeric" ? "text" : props.inputType,
     };
   },
 });
@@ -172,8 +161,8 @@ export default defineComponent({
 
 <style scoped>
 .otp-input {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   padding: 5px;
   margin: 0 10px;
   font-size: 20px;

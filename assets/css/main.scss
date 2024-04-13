@@ -1,5 +1,5 @@
-$family: "iran-sans", "sans", "Inter", apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-  Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$family: "sans", "Inter", apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
+  Cantarell, "Helvetica Neue", sans-serif;
 @use "vuetify" with (
   $body-font-family: $family
 );
@@ -8,35 +8,49 @@ $family: "iran-sans", "sans", "Inter", apple-system, BlinkMacSystemFont, "Segoe 
 @tailwind utilities;
 
 :root {
-  font-family: sans-serif;
+  font-family: "sans";
+  direction: rtl !important;
 }
 @supports (font-variation-settings: normal) {
   :root {
-    font-family: sans-serif;
+    font-family: "sans";
   }
+}
+@font-face {
+  font-family: "sans";
+  src: url("../fonts/sans.ttf");
+}
+.v-slide-group__content {
+  align-items: center;
 }
 .v-messages__message {
   hyphens: none !important;
+  text-align: right !important;
+  font-size: 0.6rem !important;
 }
 button {
   letter-spacing: 0 !important;
 }
 body {
   direction: rtl !important;
-  font-family: "iran-sans","sans" , sans-serif;
+  font-family: "sans", sans-serif;
 }
 // Reset link styles
 a {
   color: inherit;
   text-decoration: none;
 }
-.v-text-field input.v-field__input {
-  text-align: right !important;
-
+p{
+  font-size: 0.8rem;
+}
+.v-card--variant-elevated {
+  box-shadow: none !important;
 }
 .v-field-label--floating,
-.v-field-label {
+.v-field-label,
+.v-label {
   right: 10px !important;
+  font-size: 0.8rem !important;
 }
 .v-field__prepend-inner {
   margin-bottom: 0.1rem;
@@ -54,7 +68,8 @@ a {
 .v-btn {
   font-weight: 700 !important;
 }
-
+.gender .v-messages__message {
+}
 // Theme gradients
 .gradient {
   &.primary {

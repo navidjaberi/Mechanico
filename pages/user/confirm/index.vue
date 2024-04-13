@@ -5,63 +5,64 @@
     @update:alertActive="updateInfoAlert"
     text="کد مجدد ارسال شد"
   />
-  <v-form>
-    <v-col class="text-center text-grey-darken-2 mt-5">
-      <p class="mb-3">لطفا کد ارسال شده را وارد کنید</p>
-      <OTPParent
-        :numInputs="4"
-        :value="otp"
-        inputType="number"
-        inputmode="numeric"
-        @on-complete="submit"
-        @update:value="changes"
-        :shouldAutoFocus="true"
-        :isDisabled="codeLoading"
-        :inputClasses="[codeError ? 'code-error' : '']"
-      />
-      <v-col cols="8" class="d-flex pa-0 mx-auto mt-7 justify-center">
-        <v-chip color="primary" @click="changeNumber">
-          <p class="text">تغییر شماره موبایل</p>
-        </v-chip>
+  <div class="size-full grid grid-cols-1 place-content-center">
+    <v-form>
+      <v-col class="text-center mt-5">
+        <p class="mb-5 md:text-xl text-sm">کد تایید را وارد کنید</p>
+
+        <OTPParent
+          :numInputs="4"
+          :value="otp"
+          inputType="number"
+          inputmode="numeric"
+          @on-complete="submit"
+          @update:value="changes"
+          :shouldAutoFocus="true"
+          :isDisabled="codeLoading"
+          :inputClasses="[codeError ? 'code-error' : '']"
+        />
+        <v-col cols="8" class="d-flex pa-0 mx-auto mt-7 justify-center"> </v-col>
+        <p class="md:text-xl text-sm text-body-2 mb-4" v-if="codeError">
+          کد وارد شده صحیح نیست دوباره تلاش کنید
+        </p>
+        <p class="md:text-xl text-sm">کد به شماره ۰۹۱۲۲۲۲۲۲ فرستاده شد</p>
+
+        <v-btn
+          class="text-primary mt-4"
+          size="large"
+          :disabled="codeLoading"
+          v-if="resendCode"
+          @click="resendCodeHandler"
+          >ارسال مجدد کد</v-btn
+        >
+        <p v-else class="mt-4">ارسال مجدد کد در : {{ timer }}</p>
       </v-col>
-      <p class="text-error text-body-2 mb-4" v-if="codeError">
-        کد وارد شده صحیح نیست دوباره تلاش کنید
-      </p>
-
-      <v-btn
-        class="text-primary mt-4 "
-        size="large"
-        :disabled="codeLoading"
-        v-if="resendCode"
-        @click="resendCodeHandler"
-        >ارسال مجدد کد</v-btn
-      >
-      <p v-else class="mt-4 ">ارسال مجدد کد در : {{ timer }}</p>
-    </v-col>
-    <v-container class="submit-btn mx-auto">
-      <v-row class="d-flex justify-center">
-        <v-col xl="7" lg="7" md="8" sm="10" xs="12" cols="12">
-          <v-btn
-            :disabled="otp.length < 4 || codeLoading"
-            block
-            :loading="codeLoading"
-            type="submit"
-            rounded="xl"
-            variant="flat"
-            color="primary"
-            size="large"
-            class="mt-8"
-            >تایید</v-btn
-          >
+      <v-col cols="10" md="3" class="d-flex flex-col mx-auto p-0 mt-5">
+        <v-img :width="150" aspect-ratio="1/1" cover :src="logo" class="mx-auto"></v-img>
+        <v-col class="d-flex align-center justify-end">
+          <v-btn class="text" color="primary" variant="text" @click="changeNumber">ویرایش</v-btn>
+          <p>شماره اشتباه است؟</p>
         </v-col>
-      </v-row>
-    </v-container>
-  </v-form>
+        <v-col class="p-0 mx-auto" cols="6">
+        <v-btn
+          :disabled="otp.length < 4 || codeLoading"
+          block
+          :loading="codeLoading"
+          type="submit"
+          rounded="xl"
+          variant="flat"
+          color="primary"
+          size="large"
+  
+          >تایید</v-btn
+        >
+      </v-col>
+      </v-col>
+    </v-form>
+  </div>
 </template>
-``
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-
+import logo from "~/assets/img/icon/logoMechanicoFull.png";
 import OTPParent from "~/components/OTP/OTPParent.vue";
 const router = useRouter();
 const twoYearsInSeconds = 2 * 365 * 24 * 60 * 60;

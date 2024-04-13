@@ -8,14 +8,26 @@ const url ="~/assets/img/icon/logoMechanicoFull.png";
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.scss'],
-  typescript: { shim: false },
+
+  typescript: {
+     shim: false,
+     strict:true,
+    tsConfig:{
+      compilerOptions:{
+        lib:["es6","dom","es2017"]
+      }
+    }
+    
+    },
   build: { transpile: ["vuetify"] },
+
   ssr: false,
   runtimeConfig: {
     public: {
       baseURL: process.env.BASE_URL || "http://asiasalamat.ir",
     },
   },
+  
   modules: [
     async (options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
@@ -30,6 +42,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+
   app: {
     head: {
       title: "Mechanico",

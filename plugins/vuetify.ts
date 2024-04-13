@@ -4,9 +4,11 @@ export default defineNuxtPlugin((app) => {
   const vuetify = createVuetify({
     ssr: true,
     defaults,
+
     // add theme
     theme: {
       defaultTheme: LIGHT_THEME,
+
       themes: {
         light,
         dark,
@@ -18,6 +20,7 @@ export default defineNuxtPlugin((app) => {
       //     darken: 3,
       //   },
     },
+
     // Add the custom iconset
     icons: {
       defaultSet: "custom",
